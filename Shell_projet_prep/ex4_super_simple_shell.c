@@ -16,7 +16,7 @@ int main()
 		foo = getline(&command, &len, stdin);
 		if (foo == -1)
 		{
-			exit(1);
+			exit(0);
 		}
 		command[foo - 1] = '\0';
 		args[0] = command;
