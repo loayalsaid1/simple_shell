@@ -8,4 +8,9 @@
 #include <unistd.h>
 #include <string.h>
 
+char **split_string(char *string, char *separators);
+unsigned int count_tokens(char *string, char *separators, unsigned int len);
+void free_pointers_array(char **array);
+
+
 #endif /*_SHELL_H_*/

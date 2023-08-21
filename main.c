@@ -1,6 +1,6 @@
 #include "shell.h" 
 
-int main()
+int main(void)
 {
 	int foo;
 	char *command = NULL;

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 unsigned int count_tokens(char *string, char *separators, unsigned int len)
 {
@@ -75,4 +75,4 @@ char **split_string(char *string, char *separators)
 	tokens_array[token_index] = NULL;
 
 	return (tokens_array);
-}	
+}
