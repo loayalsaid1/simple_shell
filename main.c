@@ -6,7 +6,7 @@ int main()
 	char *command = NULL;
 	size_t len = 0;
 	pid_t pid;
-	char *args[] = {NULL, NULL};
+	char *args[] = NULL;
 
 	while (1)
 	{
@@ -19,7 +19,7 @@ int main()
 			exit(0);
 		}
 		command[foo - 1] = '\0';
-		args[0] = command;
+		args = split_string(command, " ");
 
 		pid = fork();
 		if (pid == -1)
