@@ -6,7 +6,7 @@ int main(void)
 	char *command = NULL;
 	size_t len = 0;
 	pid_t pid;
-	char *args[] = NULL;
+	char **args = NULL;
 
 	while (1)
 	{
@@ -16,6 +16,7 @@ int main(void)
 		foo = getline(&command, &len, stdin);
 		if (foo == -1)
 		{
+			free(command);
 			exit(0);
 		}
 		command[foo - 1] = '\0';
@@ -25,6 +26,8 @@ int main(void)
 		if (pid == -1)
 		{
 			free(command);
+			command = NULL;
+			free_pointers_array(args);
 			perror("Fork");
 			exit(2);
 		}
@@ -33,7 +36,9 @@ int main(void)
 			foo = execve(args[0], args, NULL);
 			if (foo == -1)
 			{
+
 				free(command);
+				free_pointers_array(args);
 				perror("Execve");
 				exit(3);
 			}
@@ -42,7 +47,9 @@ int main(void)
 		{
 			wait(NULL);
 		}
+		free_pointers_array(args);
 	}
+	free_pointers_array(args);
 	free(command);
 	return (0);
 }

@@ -2,7 +2,7 @@
 
 unsigned int count_tokens(char *string, char *separators, unsigned int len)
 {
-	int i, temp_i, count = 0;
+	unsigned int i, temp_i, count = 0;
 
 	i = 0;
 	while (i < len)
