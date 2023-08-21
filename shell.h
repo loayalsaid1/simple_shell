@@ -8,4 +8,4 @@
 #include <unistd.h>
 #include <string.h>
 
-#endif _SHELL_H_
+#endif /*_SHELL_H_*/
