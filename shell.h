@@ -11,6 +11,6 @@
 char **split_string(char *string, char *separators);
 unsigned int count_tokens(char *string, char *separators, unsigned int len);
 void free_pointers_array(char **array);
-
+void _execute(char **, char *);
 
 #endif /*_SHELL_H_*/
