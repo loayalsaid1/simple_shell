@@ -26,13 +26,9 @@ int main(void)
 			exit(0);
 		}
 		command[foo - 1] = '\0';
+
 		args = split_string(command, " ");
-		if (strcmp(args[0], "exit") == 0)
-			exit(0);
 		_execute(args, command);
-		/*args = handle_args(command);*/
-		/* next is putting executing function in the second operand*/
-		/*(args == NULL) ? (continue) : _execute(args, command);*/
 		free_pointers_array(args);
 	}
 	free_pointers_array(args);
@@ -58,7 +54,7 @@ void _execute(char **args, char *command)
 		command = NULL;
 		free_pointers_array(args);
 		perror("Fork");
-		exit(2);
+		exit(errno);
 	}
 	else if (pid == 0)
 	{
@@ -68,7 +64,7 @@ void _execute(char **args, char *command)
 			free(command);
 			free_pointers_array(args);
 			perror("./hsh: 1");
-			exit(3);
+			exit(errno);
 		}
 	}
 	else

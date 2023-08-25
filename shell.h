@@ -7,6 +7,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <string.h>
+#include <errno.h>
+
 
 char **split_string(char *string, char *separators);
 unsigned int count_tokens(char *string, char *separators, unsigned int len);
