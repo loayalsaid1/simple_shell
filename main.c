@@ -19,17 +19,12 @@ int main(void)
 		if (isatty(0))
 			printf("$ ");
 
-		foo = getline(&command, &len, stdin);
-		if (foo == -1)
-		{
-			free(command);
-			exit(0);
-		}
-		command[foo - 1] = '\0';
-
+		get_prompt(&command, &len);
 		args = split_string(command, " ");
 		_execute(args, command);
 		free_pointers_array(args);
+		free(command);
+		command = NULL;
 	}
 	free_pointers_array(args);
 	free(command);
@@ -72,4 +67,21 @@ void _execute(char **args, char *command)
 		wait(NULL);
 	}
 
+}
+
+/**
+ * get_prompt - Read the prompt from the user
+ * @buffer_address: the adress of where to store the prompt
+ * @len_pointer: A pointer to the len variable
+ * Return - void
+ */
+void get_prompt(char **buffer_address, int *len_poiter)
+{
+ 	foo = getline(buffer_address, len_address, stdin);
+	if (foo == -1)
+	{
+		free(buffer_address);
+		exit(0);
+	}
+	buffer_address[foo - 1] = '\0';
 }
