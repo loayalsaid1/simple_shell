@@ -1,5 +1,7 @@
 #include "shell.h"
 
+extern char **environ;
+
 /**
  * main - Build a simple shell like sh
  *
@@ -25,6 +27,8 @@ int main(void)
 		}
 		command[foo - 1] = '\0';
 		args = split_string(command, " ");
+		if (strcmp(args[0], "exit") == 0)
+			exit(0);
 		_execute(args, command);
 		/*args = handle_args(command);*/
 		/* next is putting executing function in the second operand*/
@@ -58,7 +62,7 @@ void _execute(char **args, char *command)
 	}
 	else if (pid == 0)
 	{
-		foo = execve(args[0], args, NULL);
+		foo = execve(args[0], args, environ);
 		if (foo == -1)
 		{
 			free(command);
