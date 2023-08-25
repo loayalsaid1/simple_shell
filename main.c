@@ -26,8 +26,14 @@ int main(void)
 			exit(0);
 		}
 		command[foo - 1] = '\0';
-
+		
 		args = split_string(command, " ");
+		if (args[0] == NULL)
+		{
+			free(command);
+			command = NULL;
+			continue;
+		}
 		_execute(args, command);
 		free_pointers_array(args);
 	}
