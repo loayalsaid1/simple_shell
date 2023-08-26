@@ -16,5 +16,6 @@ unsigned int count_tokens(char *string, char *separators, unsigned int len);
 void free_pointers_array(char **array);
 void _execute(char **, char *);
 int handle_path(char **args);
+int handle_args(char **args);
 
 #endif /*_SHELL_H_*/

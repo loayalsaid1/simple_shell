@@ -27,7 +27,7 @@ int main(void)
 		}
 		command[foo - 1] = '\0';
 		args = split_string(command, " ");
-		if (args[0] == NULL || handle_path(args) != 0)
+		if (args[0] == NULL || handle_args(args) != 0)
 		{
 			free(command);
 			command = NULL;
@@ -42,6 +42,30 @@ int main(void)
 	return (0);
 }
 
+/**
+ * handle_args - handle special cases
+ * @args: the argv array
+ * Return: return value
+ */
+int handle_args(char **args)
+{
+	int i;
+
+	if (strcmp(args[0], "exit") == 0)
+	{
+		if (args[1])
+			exit(atoi(args[1]));
+		exit(0);
+	}
+	else if (strcmp(args[0], "env") == 0)
+	{
+		for (i = 0; environ[i] != NULL; i++)
+			printf("%s\n", environ[i]);
+		return (1);
+	}
+	else
+		return (handle_path(args));
+}
 /**
  * _execute - execute the command
  * @args: the argv array
