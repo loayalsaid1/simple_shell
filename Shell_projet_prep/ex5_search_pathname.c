@@ -6,7 +6,7 @@
  */
 #include "main.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char *[])
 {
 	int i = 1, buffer_size;
 	struct stat file_info;
