@@ -26,12 +26,12 @@ int main(void)
 			exit(0);
 		}
 		command[foo - 1] = '\0';
-		
 		args = split_string(command, " ");
-		if (args[0] == NULL)
+		if (args[0] == NULL || handle_path(args) != 0)
 		{
 			free(command);
 			command = NULL;
+			free(args);
 			continue;
 		}
 		_execute(args, command);
