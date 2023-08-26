@@ -7,7 +7,7 @@
  * @len: the length of the whole string
  * Return: the count
  */
-unsigned int count_tokens( *string, char *separators, unsigned int len)
+unsigned int count_tokens(char *string, char *separators, unsigned int len)
 {
 	unsigned int i, temp_i, count = 0;
 
