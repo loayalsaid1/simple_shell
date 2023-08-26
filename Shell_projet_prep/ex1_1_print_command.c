@@ -2,7 +2,7 @@
 
 int main()
 {
-	char *input = NULL;
+	char *input = ;
 	long unsigned int input_len;
 	
 	printf("$ ");
