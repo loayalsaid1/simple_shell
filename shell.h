@@ -5,7 +5,17 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+#include <errno.h>
 
-#endif _SHELL_H_
+
+char **split_string(char *string, char *separators);
+unsigned int count_tokens(char *string, char *separators, unsigned int len);
+void free_pointers_array(char **array);
+void _execute(char **, char *);
+int handle_path(char **args);
+int handle_args(char **args);
+
+#endif /*_SHELL_H_*/
